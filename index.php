@@ -3,15 +3,30 @@ require_once('functions/manage.php');
 get_header();
 ?>
     <section id="main-slider" class="no-margin">
+    <?php
+          $i=1;
+          $sel="SELECT * FROM banner_image ORDER BY banner_id ASC";
+          $Q=mysqli_query($con,$sel);
+        ?>
         <div class="carousel slide">
             <ol class="carousel-indicators">
-                <li data-target="#main-slider" data-slide-to="0" class="active"></li>
-                <li data-target="#main-slider" data-slide-to="1"></li>
-                <li data-target="#main-slider" data-slide-to="2"></li>
+            <?php
+            $i=1;
+            $sel="SELECT * FROM banner_image ORDER BY banner_id ASC";
+            $Q=mysqli_query($con,$sel);
+            while($banner=mysqli_fetch_assoc($Q)){
+            ?>
+            <li data-target="#main-slider" data-slide-to="<?= $i++; ?>" class="<?php if($i++=='2'){echo 'active';} ?>"></li>
+            <?php } ?>
             </ol>
             <div class="carousel-inner">
-
-                <div class="item active" style="background-image: url(images/slider/bg1.jpg)">
+            <?php
+                  $i=1;
+                  $sel="SELECT * FROM banner_image ORDER BY banner_id ASC";
+                  $Q=mysqli_query($con,$sel);
+                  while($banner=mysqli_fetch_assoc($Q)){
+                ?>
+                <div class="item <?php if($i++=='2'){echo 'active';} ?> " style="background-image: url(admin/banner/<?= $banner['banner_image']; ?>)">
                     <div class="container">
                         <div class="row">
                             <div class="col-md-7">
@@ -28,28 +43,8 @@ get_header();
                         </div>
                     </div>
                 </div>
+                <?php } ?>
                 <!--/.item-->
-
-                <div class="item" style="background-image: url(images/slider/bg2.jpg)">
-                    <div class="container">
-                        <div class="row">
-                            <div class="col-md-7">
-                                <div class="carousel-content">
-                                    <h1 class="animation animated-item-1">Help Finding Information Online</h1>
-                                    <div class="animation animated-item-2">
-                                        Every new computer that’s brought home from the store has an operating system installed onto it.
-                                    </div>
-                                    <a class="btn-slide white animation animated-item-3" href="#">Learn More</a>
-                                    <a class="btn-slide animation animated-item-3" href="#">Get Started</a>
-                                </div>
-                            </div>
-
-
-                        </div>
-                    </div>
-                </div>
-                <!--/.item-->
-
             </div>
             <!--/.carousel-inner-->
         </div>

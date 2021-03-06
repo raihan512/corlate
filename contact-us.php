@@ -17,16 +17,20 @@ get_header();
             <div class="row contact-wrap">
                 <?php
                     if(isset($_POST['submit'])){
-                        $name = $_POST['name'];
-                        $email = $_POST['email'];
-                        $cell = $_POST['cell'];
-                        $sub = $_POST['subject'];
-                        $msg = $_POST['message'];
+                        $name = htmlentities($_POST['name'],ENT_QUOTES); //htmlentities().ENT_QUOTES is used to avoid taking script from users
+                        $email = htmlentities($_POST['email'],ENT_QUOTES);
+                        $cell = htmlentities($_POST['cell'],ENT_QUOTES);
+                        $sub = htmlentities($_POST['subject'],ENT_QUOTES);
+                        $msg = htmlentities($_POST['message'],ENT_QUOTES);
+                        $mess = 'Name:' . $name . '\n' . 'Email:' . $email . '\n' . 'Phone:' . $cell . '\n' . 'Sub:' . $sub .   '\n' . 'Message:' . $mess ;
                         
+                
                         $insert = "INSERT INTO corlate_contact(contact_name,contact_email,contact_phone,contact_sub,contact_msg)
                         VALUES ('$name','$email','$cell','$sub','$msg')";
                         
                         if(mysqli_query($con,$insert)){
+                            // send email
+                            mail("raihangazi1024@gmail.com","My Website message",$mess);
                             echo "<script>alert('Message send successfully')</script>";
                         }else{
                             echo "<script>alert('message send Failed')</script>";

@@ -16,7 +16,12 @@
                     <?php if($_SESSION['role_id'] == 1 || $_SESSION['role_id'] == '2') { ?>
                     <li><a href="all-message.php"><i class="fa fa-user-circle"></i> Contact Message</a></li>
                     <?php } ?>
-                    <li><a href="#"><i class="fa fa-bandcamp"></i> Banner</a></li>
+                    <?php if($_SESSION['role_id'] == 1 || $_SESSION['role_id'] == '2') { ?>
+                    <li><a href="all-banner.php"><i class="fa fa-bandcamp"></i> Banner</a></li>
+                    <?php } ?>
+                    <?php if($_SESSION['role_id'] == 1 || $_SESSION['role_id'] == '2') { ?>
+                    <li><a href="all-feature.php"><i class="fa fa-bandcamp"></i> Feature</a></li>
+                    <?php } ?>
                     <li><a href="logout.php"><i class="fa fa-power-off"></i> Logout</a></li>
                   </ul>
               </div>

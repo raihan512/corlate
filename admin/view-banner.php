@@ -7,7 +7,7 @@ get_sidebar();
 
 $id= $_GET['v'];
 
-$sel= "SELECT * FROM corlate_contact  WHERE contact_id= '$id'";
+$sel= "SELECT * FROM banner_image  WHERE banner_id= '$id'";
 $q=mysqli_query($con,$sel);
 $data=mysqli_fetch_assoc($q);
 
@@ -18,10 +18,10 @@ $data=mysqli_fetch_assoc($q);
               <div class="card-header">
                   <div class="row">
                       <div class="col-md-8">
-                            <h4 class="card_header_title"><i class="fa fa-gg-circle"></i> View User Information</h4>
+                            <h4 class="card_header_title"><i class="fa fa-gg-circle"></i> View Banner Information</h4>
                       </div>
                       <div class="col-md-4 text-right">
-                          <a class="btn btn-sm btn-dark card_top_btn" href="all-user.php"><i class="fa fa-th"></i> All User</a>
+                          <a class="btn btn-sm btn-dark card_top_btn" href="all-banner.php"><i class="fa fa-th"></i> All Banner</a>
                       </div>
                       <div class="clearfix"></div>
                   </div>
@@ -32,29 +32,29 @@ $data=mysqli_fetch_assoc($q);
                       <div class="col-md-8">
                           <table class="table table-bordered table-striped table-hover custom_view_table">
                               <tr>
-                                  <td>Name</td>
+                                  <td>Tittle</td>
                                   <td>:</td>
-                                  <td><?= $data['contact_name']; ?></td>
+                                  <td><?= $data['banner_title']; ?></td>
                               </tr>
                               <tr>
-                                  <td>Phone</td>
+                                  <td>Subtitle</td>
                                   <td>:</td>
-                                  <td><?= $data['contact_phone']; ?></td>
+                                  <td><?= $data['banner_subtitle']; ?></td>
                               </tr>
                               <tr>
-                                  <td>Email</td>
+                                  <td>Button</td>
                                   <td>:</td>
-                                  <td><?= $data['contact_email']; ?></td>
+                                  <td><?= $data['banner_btn']; ?></td>
                               </tr>
                               <tr>
-                                  <td>Subject</td>
+                                  <td>URL</td>
                                   <td>:</td>
-                                  <td><?= $data['contact_sub']; ?></td>
+                                  <td><?= $data['banner_url']; ?></td>
                               </tr>
                               <tr>
-                                  <td>User Message</td>
+                                  <td>Image</td>
                                   <td>:</td>
-                                  <td><?= $data['contact_msg']; ?></td>
+                                  <td><img height="350px" width="500px" src="banner/<?= $data['banner_image'];?>" alt=""></td>
                               </tr>
                         
                           </table>
